@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - VidaPlus</title>
+    <link rel="stylesheet" href="login.css"> <!-- Link para o CSS abaixo -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body class="background-fixed"> <!-- Fundo fixo aplicado aqui -->
+    <div class="container">
+        <div class="header">           
+            <img src="logo1.png" alt="Ícone do Sistema VidaPlus" class="header-image">
+            <div class="subtitle">Sistema de Gestão Hospitalar e Serviços de Saúde</div>
+        </div>
+        
+        <!-- Nova tela de login -->
+        <div class="login-container">                                   
+            <h2>Login</h2>                
+            <form id="login-form">               
+                <div class="form-group">                                       
+                    <label for="email">
+                        <i class="bx bxs-user"></i>                                               
+                        Email ou Usuário:</label>
+                    <input type="text" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">
+                        <i class="bx bxs-lock-alt"></i>                        
+                        Senha:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="remember">
+                    <label>
+                        <input type="checkbox">
+                        Lembrar senha
+                    </label>
+                    <a href="#">Esqueci senha</a>
+                </div>
+                <br>
+                <br>
+                <button type="submit" class="btn-login">Entrar</button>
+            </form>
+            <div class="register-link">
+                <p> Não tem uma conta? <a href="#">Cadastre-se</a> </p>
+            </div>
+            <p id="login-message"></p> <!-- Para mensagens de erro/sucesso -->
+        </div>
+    </div>
+    
+    <script src="login.js"></script> <!-- Link para o JS abaixo -->
+</body>
+</html>

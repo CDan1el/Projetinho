@@ -1,0 +1,152 @@
+/* Fundo fixo (já definido anteriormente) */
+.background-fixed {
+    background-image: url('hosp.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif; /* Fonte padrão */
+    color: #000000; /* Cor do texto */
+}
+
+/* Header (já definido anteriormente) */
+.header {      
+    border-radius: 20px;    
+    padding: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+    
+}
+
+.header-image {        
+    width: 500px;
+    height: auto;
+    margin: 10px auto;
+    display: block;
+    border-radius: 10px;    
+    transition: transform 0.3s ease;
+}
+
+.header-image:hover {
+    transform: scale(1.05);
+}
+
+/* Estilos para a tela de login */
+.login-container {
+    background:transparent; /* Fundo semi-transparente para contraste */ 
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.2);    
+    padding: 30px 40px;
+    max-width: 400px; /* Largura máxima */
+    margin: 0 auto; /* Centraliza */
+    text-align:center;
+    backdrop-filter: blur(35px);
+}
+
+.login-container h2 {   
+    margin-bottom: 20px;
+    color: #0c0c0c; /* Cor escura para o título */
+}
+
+.form-group {
+    margin-bottom: 10px;
+    text-align:center;
+}
+
+.form-group label {
+    /*display: block;*/
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 17px;
+    box-sizing: border-box; /* Inclui padding na largura */
+}
+
+.form-group input:focus {
+    border-color: #01116e; /* Destaque ao focar */
+    outline: none;
+}
+
+.btn-login {
+    width: 50%;
+    padding: 12px;
+    background-color: #838080; /* Cor do botão, alinhada ao tema */
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;    
+}
+
+.btn-login:hover {
+    background-color: #0550f1; /* Cor mais clara no hover */
+}
+
+#login-message {
+    margin-top: 15px;
+    font-size: 14px;
+    color: red; /* Vermelho para erros */
+}
+
+/* Responsividade para mobile*/
+@media (max-width: 768px) {
+    .login-container {
+        padding: 20px;
+        max-width: 90%; /* Ajusta para telas pequenas */
+    }
+}
+.remember{
+    font-size: 16px;
+    display:flex;
+    justify-content: space-between;
+    margin: 20px 0 10px;
+}
+/* Tela de login Cadastre-se*/
+.remember label input {    
+    accent-color: #ffffff;
+    margin-right: 5px;
+}
+
+.remember a {
+    font-size: 16px;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.remember a:hover {
+    text-decoration: underline;
+    color: #0550f1;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.register-link{
+    font-size: 16px;    
+    text-align: center;
+    margin: 20px 0 15px;
+}
+
+.register-link a {
+    font-size: 16px;
+    text-decoration: none;    
+    text-align: center;
+    margin: 20px 0 15px;
+    color: #ffffff;
+}
+.register-link a:hover {    
+    text-decoration: underline;
+    color: #0550f1;
+    font-weight: 800;
+    font-size: 16px;
+
+}
