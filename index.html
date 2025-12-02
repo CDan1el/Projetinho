@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VidaPlus - Sistema de Gestão Hospitalar</title>
+    <link rel="stylesheet" href="visual.css">
+</head>
+<body class="background-fixed">    
+    <div class="container">
+        <div class="header">
+           <!--<div class="logo">VidaPlus</div>
+           -->
+           <img class="header-image" src="logo1.png". >
+           <div class="subtitle">Sistema de Gestão Hospitalar e Serviços de Saúde</div>
+        </div>
+
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="showTab('dashboard')">Dashboard</button>
+            <button class="tab-btn" onclick="showTab('pacientes')">Pacientes</button>
+            <button class="tab-btn" onclick="showTab('profissionais')">Profissionais</button>
+            <button class="tab-btn" onclick="showTab('administracao')">Administração</button>
+            <button class="tab-btn" onclick="showTab('telemedicina')">Telemedicina</button>
+            <button class="tab-btn" onclick="showTab('auditoria')">Auditoria</button>
+        </div>
+
+        <!-- Dashboard -->
+        <div id="dashboard" class="content-section active">
+            <h2>Dashboard Executivo</h2>
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <div class="dashboard-number" id="total-pacientes">0</div>
+                    <div class="dashboard-label">Pacientes Ativos</div>
+                </div>
+                <div class="dashboard-card">
+                    <div class="dashboard-number" id="total-profissionais">0</div>
+                    <div class="dashboard-label">Profissionais</div>
+                </div>
+                <div class="dashboard-card">
+                    <div class="dashboard-number" id="leitos-ocupados">0</div>
+                    <div class="dashboard-label">Leitos Ocupados</div>
+                </div>
+                <div class="dashboard-card">
+                    <div class="dashboard-number" id="consultas-hoje">0</div>
+                    <div class="dashboard-label">Consultas Hoje</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pacientes -->
+        <div id="pacientes" class="content-section">
+            <h2>Gestão de Pacientes</h2>
+            
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Nome Completo *</label>
+                    <input type="text" id="paciente-nome" required>
+                </div>
+                <div class="form-group">
+                    <label>CPF *</label>
+                    <input type="text" id="paciente-cpf" required>
+                </div>
+                <div class="form-group">
+                    <label>Data de Nascimento</label>
+                    <input type="date" id="paciente-nascimento">
+                </div>
+                <div class="form-group">
+                    <label>Telefone</label>
+                    <input type="tel" id="paciente-telefone">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="paciente-email">
+                </div>
+                <div class="form-group">
+                    <label>Plano de Saúde</label>
+                    <select id="paciente-plano">
+                        <option value="">Particular</option>
+                        <option value="unimed">Unimed</option>
+                        <option value="bradesco">Bradesco Saúde</option>
+                        <option value="amil">Amil</option>
+                        <option value="sus">SUS</option>
+                    </select>
+                </div>
+            </div>
+            
+            <button class="btn" onclick="cadastrarPaciente()">Cadastrar Paciente</button>
+            <button class="btn" onclick="agendarConsulta()">Agendar Consulta</button>
+            
+            <div id="alert-pacientes"></div>
+            
+            <table class="data-table" id="tabela-pacientes">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>Plano</th>
+                        <th>Última Consulta</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <!-- Profissionais -->
+        <div id="profissionais" class="content-section">
+            <h2>Gestão de Profissionais</h2>
+            
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Nome Completo *</label>
+                    <input type="text" id="prof-nome" required>
+                </div>
+                <div class="form-group">
+                    <label>CRM/COREN *</label>
+                    <input type="text" id="prof-registro" required>
+                </div>
+                <div class="form-group">
+                    <label>Especialidade</label>
+                    <select id="prof-especialidade">
+                        <option value="clinico">Clínico Geral</option>
+                        <option value="cardiologia">Cardiologia</option>
+                        <option value="pediatria">Pediatria</option>
+                        <option value="ginecologia">Ginecologia</option>
+                        <option value="ortopedia">Ortopedia</option>
+                        <option value="enfermagem">Enfermagem</option>
+                        <option value="tecnico">Técnico</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Telefone</label>
+                    <input type="tel" id="prof-telefone">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="prof-email">
+                </div>
+                <div class="form-group">
+                    <label>Unidade</label>
+                    <select id="prof-unidade">
+                        <option value="hospital-central">Hospital Central</option>
+                        <option value="clinica-norte">Clínica Norte</option>
+                        <option value="clinica-sul">Clínica Sul</option>
+                        <option value="laboratorio">Laboratório</option>
+                        <option value="home-care">Home Care</option>
+                    </select>
+                </div>
+            </div>
+            
+            <button class="btn" onclick="cadastrarProfissional()">Cadastrar Profissional</button>
+            
+            <div id="alert-profissionais"></div>
+            
+            <table class="data-table" id="tabela-profissionais">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Registro</th>
+                        <th>Especialidade</th>
+                        <th>Unidade</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <!-- Administração -->
+        <div id="administracao" class="content-section">
+            <h2>Administração Hospitalar</h2>
+            
+            <h3>Gestão de Leitos</h3>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Número do Leito</label>
+                    <input type="text" id="leito-numero">
+                </div>
+                <div class="form-group">
+                    <label>Setor</label>
+                    <select id="leito-setor">
+                        <option value="enfermaria">Enfermaria</option>
+                        <option value="uti">UTI</option>
+                        <option value="pediatria">Pediatria</option>
+                        <option value="maternidade">Maternidade</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Status</label>
+                    <select id="leito-status">
+                        <option value="disponivel">Disponível</option>
+                        <option value="ocupado">Ocupado</option>
+                        <option value="manutencao">Manutenção</option>
+                    </select>
+                </div>
+            </div>
+            
+            <button class="btn" onclick="cadastrarLeito()">Cadastrar Leito</button>
+            
+            <div id="alert-administracao"></div>
+            
+            <table class="data-table" id="tabela-leitos">
+                <thead>
+                    <tr>
+                        <th>Número</th>
+                        <th>Setor</th>
+                        <th>Status</th>
+                        <th>Paciente</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <!-- Telemedicina -->
+        <div id="telemedicina" class="content-section">
+            <h2>Telemedicina</h2>
+            
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Paciente</label>
+                    <select id="tele-paciente">
+                        <option value="">Selecione um paciente</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Médico</label>
+                    <select id="tele-medico">
+                        <option value="">Selecione um médico</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Data/Hora</label>
+                    <input type="datetime-local" id="tele-datetime">
+                </div>
+                <div class="form-group">
+                    <label>Tipo de Consulta</label>
+                    <select id="tele-tipo">
+                        <option value="consulta">Consulta</option>
+                        <option value="retorno">Retorno</option>
+                        <option value="emergencia">Emergência</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Observações</label>
+                <textarea id="tele-observacoes" rows="4"></textarea>
+            </div>
+            
+            <button class="btn" onclick="agendarTelemedicina()">Agendar Telemedicina</button>
+            <button class="btn" onclick="iniciarConsulta()">Iniciar Consulta Online</button>
+            
+            <div id="alert-telemedicina"></div>
+            
+            <table class="data-table" id="tabela-telemedicina">
+                <thead>
+                    <tr>
+                        <th>Data/Hora</th>
+                        <th>Paciente</th>
+                        <th>Médico</th>
+                        <th>Tipo</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <!-- Auditoria -->
+        <div id="auditoria" class="content-section">
+            <h2>Auditoria e Compliance</h2>
+            
+            <h3>Logs de Auditoria</h3>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Data Inicial</label>
+                    <input type="date" id="audit-data-inicio">
+                </div>
+                <div class="form-group">
+                    <label>Data Final</label>
+                    <input type="date" id="audit-data-fim">
+                </div>
+                <div class="form-group">
+                    <label>Tipo de Evento</label>
+                    <select id="audit-tipo">
+                        <option value="">Todos</option>
+                        <option value="login">Login</option>
+                        <option value="cadastro">Cadastro</option>
+                        <option value="consulta">Consulta</option>
+                        <option value="prescricao">Prescrição</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Usuário</label>
+                    <input type="text" id="audit-usuario">
+                </div>
+            </div>
+            
+            <button class="btn" onclick="buscarLogs()">Buscar Logs</button>
+            <button class="btn" onclick="exportarRelatorio()">Exportar Relatório</button>
+            
+            <table class="data-table" id="tabela-auditoria">
+                <thead>
+                    <tr>
+                        <th>Data/Hora</th>
+                        <th>Usuário</th>
+                        <th>Ação</th>
+                        <th>Detalhes</th>
+                        <th>IP</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal para Prontuário -->
+    <div id="modal-prontuario" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal('modal-prontuario')">&times;</span>
+            <h3>Prontuário do Paciente</h3>
+            <div id="prontuario-content"></div>
+        </div>
+    </div>
+ <!-- Scripts -->
+<script src="mains.js"></script>
+</body>
+</html>
+
