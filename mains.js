@@ -3,6 +3,7 @@
 // JavaScript Principal - Integração Completa
 // ==============================================
 
+
 // Variáveis globais para armazenamento de dados
 let pacientes = [];
 let profissionais = [];
